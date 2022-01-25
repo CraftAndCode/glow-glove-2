@@ -17,7 +17,6 @@ input.onButtonPressed(Button.A, function () {
     music.stopAllSounds()
     music.setVolume(Mute * 255)
     music.playTone(262, music.beat(BeatFraction.Quarter))
-    basic.showNumber(GloveMode)
 })
 function ColorFade (Color: number) {
     for (let index3 = 0; index3 <= 63; index3++) {
@@ -81,7 +80,6 @@ input.onButtonPressed(Button.B, function () {
     music.stopAllSounds()
     music.setVolume(Mute * 255)
     music.playTone(262, music.beat(BeatFraction.Quarter))
-    basic.showNumber(GloveMode)
 })
 function Custom () {
     strip.clear()
@@ -107,19 +105,17 @@ input.onGesture(Gesture.Shake, function () {
     music.stopAllSounds()
     music.setVolume(Mute * 255)
     IsShaking = true
-    for (let index7 = 0; index7 <= 10; index7++) {
-        strip.showColor(neopixel.colors(NeoPixelColors.Red))
-        pins.digitalWritePin(DigitalPin.P2, 1)
-        music.playTone(988, music.beat(BeatFraction.Sixteenth))
-        music.playTone(784, music.beat(BeatFraction.Sixteenth))
-        basic.pause(100 - index7 * 10)
-        strip.showColor(neopixel.colors(NeoPixelColors.Black))
-        music.playTone(880, music.beat(BeatFraction.Sixteenth))
-        music.playTone(698, music.beat(BeatFraction.Sixteenth))
-        pins.digitalWritePin(DigitalPin.P2, 0)
-        basic.pause(100 - index7 * 10)
+    for (let index = 0; index <= 20; index++) {
+        strip.showColor(neopixel.hsl(0, 0, index * 4))
+        music.ringTone(110 + index * 8)
+        basic.pause(5)
     }
-    music.startMelody(music.builtInMelody(Melodies.BaDing), MelodyOptions.Once)
+    for (let index7 = 0; index7 <= 100; index7++) {
+        strip.showColor(neopixel.hsl(0, 0, 255 - Math.map(index7, 0, 100, 0, 255)))
+        music.ringTone(1760 - index7 * 17)
+        basic.pause(1)
+    }
+    music.stopAllSounds()
     basic.pause(750)
     IsShaking = false
 })
@@ -135,9 +131,9 @@ range1 = 0
 range2 = 348
 GloveMode = 1
 Mute = 1
-basic.showNumber(1)
 basic.forever(function () {
     strip.setBrightness(63)
+    basic.showNumber(GloveMode)
     if (!(IsShaking)) {
         if (GloveMode == 1) {
             Rainbow()

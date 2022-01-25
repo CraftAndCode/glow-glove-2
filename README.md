@@ -45,11 +45,11 @@
 {
     "name": "Как выглядит твоя суперсила?",
     "imageUrl":"https://raw.githubusercontent.com/CraftAndCode/mood-badge/master/mood%20badge%20schematic.gif",
-    "url": "https://makecode.microbit.org/#tutorial:44093-35336-48736-30388", 
+    "url": "https://makecode.microbit.org/#tutorial:github:craftandcode/your-superpower/ru", 
     "description": "Меняем световые режимы", 
     "cardType": "tutorial",
-    "label": "Easy",
-    "labelClass": "green ribbon small"
+    "label": "Advanced",
+    "labelClass": "orange ribbon small"
 }
 ]
 ```
