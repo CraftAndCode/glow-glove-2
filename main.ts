@@ -1,4 +1,4 @@
-function Random() {
+function Random () {
     music.ringTone(randint(131, 988))
     strip.setBrightness(255)
     strip.setPixelColor(randint(0, strip.length() - 1), neopixel.hsl(randint(0, 360), randint(63, 128), randint(0, 64)))
@@ -19,7 +19,7 @@ input.onButtonPressed(Button.A, function () {
     music.playTone(262, music.beat(BeatFraction.Quarter))
     basic.showNumber(GloveMode)
 })
-function ColorFade(Color: number) {
+function ColorFade (Color: number) {
     for (let index3 = 0; index3 <= 63; index3++) {
         music.ringTone(262 + Math.map(pins.analogReadPin(AnalogPin.P0), 0, 255, 0, 200))
         music.setVolume(Mute * (index3 * 4))
@@ -43,7 +43,7 @@ function ColorFade(Color: number) {
         basic.pause(10 - Math.map(pins.analogReadPin(AnalogPin.P0), 0, 255, 0, 10))
     }
 }
-function TwoColors(Color1: number, Color2: number) {
+function TwoColors (Color1: number, Color2: number) {
     for (let index5 = 0; index5 <= Math.ceil(strip.length() / 2); index5++) {
         music.ringTone(196)
         strip.setPixelColor(index5 * 2, Color1)
@@ -83,7 +83,7 @@ input.onButtonPressed(Button.B, function () {
     music.playTone(262, music.beat(BeatFraction.Quarter))
     basic.showNumber(GloveMode)
 })
-function Custom() {
+function Custom () {
     strip.clear()
     strip.show()
 }
@@ -108,7 +108,7 @@ input.onGesture(Gesture.Shake, function () {
     basic.pause(750)
     IsShaking = false
 })
-function Rainbow() {
+function Rainbow () {
     if (!(MusicPlaying)) {
         MusicPlaying = true
         music.startMelody(music.builtInMelody(Melodies.Nyan), MelodyOptions.Forever)
