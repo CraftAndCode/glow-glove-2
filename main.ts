@@ -87,6 +87,21 @@ function Custom () {
     strip.clear()
     strip.show()
 }
+function Rainbow () {
+    if (!(MusicPlaying)) {
+        MusicPlaying = true
+        music.startMelody(music.builtInMelody(Melodies.Nyan), MelodyOptions.Forever)
+    }
+    music.setTempo(Math.map(pins.analogReadPin(AnalogPin.P0), 0, 255, 60, 180))
+    strip.showRainbow(range1, range2)
+    strip.easeBrightness()
+    range1 += 2 + Math.map(pins.analogReadPin(AnalogPin.P0), 0, 255, 0, 18)
+    range2 += 2 + Math.map(pins.analogReadPin(AnalogPin.P0), 0, 255, 0, 18)
+    if (range1 > 360) {
+        range1 = 0
+        range2 = 348
+    }
+}
 input.onGesture(Gesture.Shake, function () {
     MusicPlaying = false
     music.stopAllSounds()
@@ -108,21 +123,6 @@ input.onGesture(Gesture.Shake, function () {
     basic.pause(750)
     IsShaking = false
 })
-function Rainbow () {
-    if (!(MusicPlaying)) {
-        MusicPlaying = true
-        music.startMelody(music.builtInMelody(Melodies.Nyan), MelodyOptions.Forever)
-    }
-    music.setTempo(Math.map(pins.analogReadPin(AnalogPin.P0), 0, 255, 60, 180))
-    strip.showRainbow(range1, range2)
-    strip.easeBrightness()
-    range1 += 2 + Math.map(pins.analogReadPin(AnalogPin.P0), 0, 255, 0, 18)
-    range2 += 2 + Math.map(pins.analogReadPin(AnalogPin.P0), 0, 255, 0, 18)
-    if (range1 > 360) {
-        range1 = 0
-        range2 = 348
-    }
-}
 let IsShaking = false
 let MusicPlaying = false
 let Mute = 0
