@@ -1,31 +1,55 @@
+### @autoOpen = true
+#### 1. Подключите ваш Micro:bit с помощью кабеля USB.
+#### 2. Синхронизируйте Micro:bit, нажав кнопку `||led....||` - `||led.Подключить устройство||`.
+#### 3. Загрузите программу световой перчатки, нажав `||led.Скачать||`.
+#### 4. Узнайте больше о программировании, запустив интерактивные уроки.
 
-> Open this page at [https://craftandcode.github.io/glow-glove-2/](https://craftandcode.github.io/glow-glove-2/)
+## Учимся программировать
 
-## Use as Extension
+```codecard
+[
+{
+    "name": "Расширение Neopixel: Часть 1",
+    "imageUrl":"https://raw.githubusercontent.com/CraftAndCode/mood-badge/master/mood%20badge%20schematic.gif",
+    "url": "https://makecode.microbit.org/#tutorial:github:craftandcode/neopixel-part-1/ru", 
+    "description": "Научимся управлять цветной светодиодной лентой", 
+    "cardType": "tutorial",
+    "label": "Advanced",
+    "labelClass": "orange ribbon small"
+},
+{
+    "name": "Расширение Neopixel: Часть 2",
+    "imageUrl":"https://raw.githubusercontent.com/CraftAndCode/mood-badge/master/mood%20badge%20schematic.gif",
+    "url": "https://makecode.microbit.org/#tutorial:github:craftandcode/neopixel-part-2/ru", 
+    "description": "Научимся управлять цветной светодиодной лентой", 
+    "cardType": "tutorial",
+    "label": "Advanced",
+    "labelClass": "orange ribbon small"
+},
+{
+    "name": "Повторяющий цикл",
+    "imageUrl":"https://raw.githubusercontent.com/CraftAndCode/mood-badge/master/mood%20badge%20schematic.gif",
+    "url": "https://makecode.microbit.org/#tutorial:github:craftandcode/repeat-cycle/ru", 
+    "description": "Научим Micro:bit повторять части программы", 
+    "cardType": "tutorial",
+    "label": "Advanced",
+    "labelClass": "orange ribbon small"
+}
+]
+```
 
-This repository can be added as an **extension** in MakeCode.
-
-* open [https://makecode.microbit.org/](https://makecode.microbit.org/)
-* click on **New Project**
-* click on **Extensions** under the gearwheel menu
-* search for **https://github.com/craftandcode/glow-glove-2** and import
-
-## Edit this project ![Build status badge](https://github.com/craftandcode/glow-glove-2/workflows/MakeCode/badge.svg)
-
-To edit this repository in MakeCode.
-
-* open [https://makecode.microbit.org/](https://makecode.microbit.org/)
-* click on **Import** then click on **Import URL**
-* paste **https://github.com/craftandcode/glow-glove-2** and click import
-
-## Blocks preview
-
-This image shows the blocks code from the last commit in master.
-This image may take a few minutes to refresh.
-
-![A rendered view of the blocks](https://github.com/craftandcode/glow-glove-2/raw/master/.github/makecode/blocks.png)
-
-#### Metadata (used for search, rendering)
-
-* for PXT/microbit
-<script src="https://makecode.com/gh-pages-embed.js"></script><script>makeCodeRender("{{ site.makecode.home_url }}", "{{ site.github.owner_name }}/{{ site.github.repository_name }}");</script>
+## Световая перчатка
+Инструкции по изменению программы световой перчатки
+```codecard
+[
+{
+    "name": "Как выглядит твоя суперсила?",
+    "imageUrl":"https://raw.githubusercontent.com/CraftAndCode/mood-badge/master/mood%20badge%20schematic.gif",
+    "url": "https://makecode.microbit.org/#tutorial:44093-35336-48736-30388", 
+    "description": "Меняем световые режимы", 
+    "cardType": "tutorial",
+    "label": "Easy",
+    "labelClass": "green ribbon small"
+}
+]
+```
