@@ -3,9 +3,9 @@ function Random () {
     strip.setBrightness(255)
     strip.setPixelColor(randint(0, strip.length() - 1), neopixel.hsl(randint(0, 360), randint(63, 128), randint(0, 64)))
     strip.show()
-    basic.pause(150 - Math.map(pins.analogReadPin(AnalogPin.P0), 0, 255, 0, 100))
+    basic.pause(250 - Math.map(pins.analogReadPin(AnalogPin.P0), 0, 255, 0, 50))
     music.stopAllSounds()
-    basic.pause(150 - Math.map(pins.analogReadPin(AnalogPin.P0), 0, 255, 0, 100))
+    basic.pause(250 - Math.map(pins.analogReadPin(AnalogPin.P0), 0, 255, 0, 50))
 }
 input.onButtonPressed(Button.A, function () {
     if (GloveMode == 1) {
@@ -17,6 +17,7 @@ input.onButtonPressed(Button.A, function () {
     music.stopAllSounds()
     music.setVolume(Mute * 255)
     music.playTone(262, music.beat(BeatFraction.Quarter))
+    basic.showNumber(GloveMode)
 })
 function ColorFade (Color: number) {
     for (let index3 = 0; index3 <= 63; index3++) {
@@ -49,18 +50,18 @@ function TwoColors (Color1: number, Color2: number) {
         strip.setPixelColor(index5 * 2 + 1, Color2)
         strip.show()
     }
-    basic.pause(350 - Math.map(pins.analogReadPin(AnalogPin.P0), 0, 255, 0, 80))
+    basic.pause(350 - Math.map(pins.analogReadPin(AnalogPin.P0), 0, 255, 0, 50))
     music.stopAllSounds()
-    basic.pause(350 - Math.map(pins.analogReadPin(AnalogPin.P0), 0, 255, 0, 80))
+    basic.pause(350 - Math.map(pins.analogReadPin(AnalogPin.P0), 0, 255, 0, 50))
     for (let index6 = 0; index6 <= Math.ceil(strip.length() / 2); index6++) {
         music.ringTone(131)
         strip.setPixelColor(index6 * 2, Color2)
         strip.setPixelColor(index6 * 2 + 1, Color1)
         strip.show()
     }
-    basic.pause(350 - Math.map(pins.analogReadPin(AnalogPin.P0), 0, 255, 0, 80))
+    basic.pause(350 - Math.map(pins.analogReadPin(AnalogPin.P0), 0, 255, 0, 50))
     music.stopAllSounds()
-    basic.pause(350 - Math.map(pins.analogReadPin(AnalogPin.P0), 0, 255, 0, 80))
+    basic.pause(350 - Math.map(pins.analogReadPin(AnalogPin.P0), 0, 255, 0, 50))
 }
 input.onButtonPressed(Button.AB, function () {
     if (Mute == 1) {
@@ -80,6 +81,7 @@ input.onButtonPressed(Button.B, function () {
     music.stopAllSounds()
     music.setVolume(Mute * 255)
     music.playTone(262, music.beat(BeatFraction.Quarter))
+    basic.showNumber(GloveMode)
 })
 function Custom () {
     strip.clear()
@@ -90,7 +92,7 @@ function Rainbow () {
         MusicPlaying = true
         music.startMelody(music.builtInMelody(Melodies.Nyan), MelodyOptions.Forever)
     }
-    music.setTempo(Math.map(pins.analogReadPin(AnalogPin.P0), 0, 255, 60, 180))
+    music.setTempo(Math.map(pins.analogReadPin(AnalogPin.P0), 0, 255, 60, 100))
     strip.showRainbow(range1, range2)
     strip.easeBrightness()
     range1 += 2 + Math.map(pins.analogReadPin(AnalogPin.P0), 0, 255, 0, 18)
@@ -126,14 +128,15 @@ let GloveMode = 0
 let range2 = 0
 let range1 = 0
 let strip: neopixel.Strip = null
-strip = neopixel.create(DigitalPin.P1, 12, NeoPixelMode.RGB)
+pins.setAudioPin(AnalogPin.P2)
+strip = neopixel.create(DigitalPin.P1, 8, NeoPixelMode.RGB)
 range1 = 0
 range2 = 348
 GloveMode = 1
 Mute = 1
+basic.showNumber(GloveMode)
 basic.forever(function () {
     strip.setBrightness(63)
-    basic.showNumber(GloveMode)
     if (!(IsShaking)) {
         if (GloveMode == 1) {
             Rainbow()
