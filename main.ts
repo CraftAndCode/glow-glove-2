@@ -87,21 +87,6 @@ function Custom () {
     strip.clear()
     strip.show()
 }
-function Rainbow () {
-    if (!(MusicPlaying)) {
-        MusicPlaying = true
-        music.startMelody(music.builtInMelody(Melodies.Nyan), MelodyOptions.Forever)
-    }
-    music.setTempo(Math.map(pins.analogReadPin(AnalogPin.P0), 0, 255, 60, 100))
-    strip.showRainbow(range1, range2)
-    strip.easeBrightness()
-    range1 += 2 + Math.map(pins.analogReadPin(AnalogPin.P0), 0, 255, 0, 18)
-    range2 += 2 + Math.map(pins.analogReadPin(AnalogPin.P0), 0, 255, 0, 18)
-    if (range1 > 360) {
-        range1 = 0
-        range2 = 348
-    }
-}
 input.onGesture(Gesture.Shake, function () {
     MusicPlaying = false
     music.stopAllSounds()
@@ -121,6 +106,21 @@ input.onGesture(Gesture.Shake, function () {
     basic.pause(750)
     IsShaking = false
 })
+function Rainbow () {
+    if (!(MusicPlaying) && Mute == 1) {
+        MusicPlaying = true
+        music.startMelody(music.builtInMelody(Melodies.Nyan), MelodyOptions.Forever)
+    }
+    music.setTempo(Math.map(pins.analogReadPin(AnalogPin.P0), 0, 255, 60, 100))
+    strip.showRainbow(range1, range2)
+    strip.easeBrightness()
+    range1 += 2 + Math.map(pins.analogReadPin(AnalogPin.P0), 0, 255, 0, 18)
+    range2 += 2 + Math.map(pins.analogReadPin(AnalogPin.P0), 0, 255, 0, 18)
+    if (range1 > 360) {
+        range1 = 0
+        range2 = 348
+    }
+}
 let IsShaking = false
 let MusicPlaying = false
 let Mute = 0
@@ -133,7 +133,7 @@ strip = neopixel.create(DigitalPin.P1, 8, NeoPixelMode.RGB)
 range1 = 0
 range2 = 348
 GloveMode = 1
-Mute = 1
+Mute = 0
 basic.showNumber(GloveMode)
 basic.forever(function () {
     strip.setBrightness(63)
